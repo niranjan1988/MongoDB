@@ -10,11 +10,13 @@ describe('Validating records', () => {
         assert(message == "Name is required");
     });
 
-    it('Check if user name is longer than 2 characters', () => {
+    it('Check if user name is longer than 2 characters', (done) => {
         const user = new User({name:'V'});
-        const validationResult = user.validateSync();
-        const {message} = validationResult.errors.name;
-        assert(message == "Name should be greater than 2 characters");
+        user.validate().catch((validationResult)=>{
+            const {message} = validationResult.errors.name;
+            assert(message == "Name should be greater than 2 characters");
+            done();
+        });        
     });
 
     it('Check if error is returned on save when the name is less than 2 characters', (done) => {
@@ -24,8 +26,7 @@ describe('Validating records', () => {
             const {message} = validationResult.errors.name;
             assert(message == "Name should be greater than 2 characters");
             done();
-        })
-        
+        })        
     });
 });
  
