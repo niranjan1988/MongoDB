@@ -1,4 +1,3 @@
-const { doesNotMatch } = require('assert');
 const assert = require('assert');
 const User = require('../src/user')
 

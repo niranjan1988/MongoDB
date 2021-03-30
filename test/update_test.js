@@ -5,7 +5,7 @@ describe('Update a User', () => {
     let joe;
 
     beforeEach((done) => {
-        joe = new User({ name: 'Joe', postCount: 0 });
+        joe = new User({ name: 'Joe' });
         joe.save().then(() => {
             done();
         })
@@ -42,7 +42,7 @@ describe('Update a User', () => {
 
     //====================================================================================================
 
-    it('Increment the postCount of  users by 1 on the Mongodb side', (done) => {
+    xit('Increment the postCount of  users by 1 on the Mongodb side', (done) => {
         User.updateMany({name:'Joe'},{$inc:{postCount:1}})
         .then(()=> User.findOne({name:'Joe'}))
         .then((user)=> {
