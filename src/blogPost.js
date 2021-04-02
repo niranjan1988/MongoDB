@@ -12,4 +12,4 @@ const blogPostSchema = new Schema({
 
 const BlogPost = mongoose.model('blogPost',blogPostSchema);
 
-module.exports = BlogPost;
+module.exports = BlogPost;  
